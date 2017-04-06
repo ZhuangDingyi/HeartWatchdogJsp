@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .box {
+            transform: translate(50%, 50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform-origin: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 600px;height:400px;"></div>
+</body>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript">
+
+    var arr = [1, 2, 3, 4, 5, 6];
+    var option = {
+
+        tooltip: {
+            /*鼠标跟随效果*/
+            trigger: 'axis'
+        },
+        legend: {
+            /*中间的小图标*/
+            data: ['最高气温', '最低气温']
+        },
+
+//右上角工具条
+        toolbox: {
+            show: true,
+            feature: {
+                mark: {show: true},
+                dataView: {show: true, readOnly: false},
+                magicType: {show: true, type: ['line', 'bar']},
+                restore: {show: true},
+                saveAsImage: {show: true}
+            }
+        },
+
+
+        xAxis: [
+            {
+                type: 'category',
+
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                show: true,
+                splitLine: {
+                    show: true,
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '总户数(户)',
+                axisLabel: {
+                    /*坐标轴的刻度文字设置*/
+                    formatter: '{value} °C',
+                    textStyle: {
+                        color: "yellowgreen"
+                    }
+                },
+                splitLine: {
+                    /*网格线的设置*/
+                    show: true,
+                },
+                axisLine: {
+                    /*坐标轴，轴线的设置*/
+                    lineStyle: {
+                        color: "red",
+                    }
+                },
+                axisTick: {
+                    /*坐标轴刻度的设置*/
+                    lineStyle: {
+                        color: "blue",
+                    }
+                },
+
+
+            },
+            {
+                type: 'value',
+                name: "户均持股数(股/户)",
+                position: "right", /*轴的位置，默认是左边*/
+                axisLabel: {
+                    formatter: '{value} °C' /*{value}指的series中对应的值， 可以用回调函数设置*/
+                },
+                splitLine: {
+                    /*网格线，不画，*/
+                    show: false,
+                },
+
+            }
+
+        ],
+        series: [
+            {
+                name: '最高气温', /*数据的名称*/
+                type: 'line', /*这个数据的类型，画折线*/
+                data: [11, 11, 20, 13, 12, 13, 10],
+                yAxisIndex: 0, /*与上面y轴的数组中，第一组数据对应*/
+
+            },
+            {
+                name: '最低气温',
+                type: 'line',
+                data: [1, 4, 2, 5, 3, 2, 0],
+                yAxisIndex: 1,
+
+            }
+        ]
+    };
+
+
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption(option);
+
+
+</script>
+<html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery Editable Select - A simple jQuery Plugin that converts a select into an text field with suggestions.</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link href="css/jquery-editable-select.min.css" rel="stylesheet">
+</head>
+<body>
+
+<select id="why123" class="form-control">
+    <option>Alfa Romeo</option>
+    <option>Audi</option>
+    <option>BMW</option>
+    <option>Citroen</option>
+</select>
+
+
+<script src="js/jquery-3.1.1.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="js/bootstrap.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>-->
+<script src="js/jquery-editable-select.min.js"></script>
+<script>
+    $("#why123").editableSelect();
+</script>
+</body>
+</html>

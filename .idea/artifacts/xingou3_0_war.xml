@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="xingou3.0:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/xingou3_0_war</output-path>
+    <root id="archive" name="xingou3.0_war.war">
+      <element id="artifact" artifact-name="xingou3.0:war exploded" />
+    </root>
+  </artifact>
+</component>
