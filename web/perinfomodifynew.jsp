@@ -246,6 +246,36 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="selfevaluate" class="col-sm-2 control-label">健康状态自我评估</label>
+                    <div class="col-sm-3">
+                        <select id="selfevaluate" class="selectpicker show-tick form-control" name="selfevaluate">
+                            <option>满意</option>
+                            <option>基本满意</option>
+                            <option>说不清楚</option>
+                            <option>不太满意</option>
+                            <option>不满意</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mentality" class="col-sm-2 control-label">心理状况</label>
+                    <div class="col-sm-3">
+                        <select id="mentality" class="selectpicker show-tick form-control" name="mentality">
+                            <option>良好</option>
+                            <option>紧张</option>
+                            <option>抑郁</option>
+                            <option>焦虑</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="allergy" class="col-sm-2 control-label">过敏药物史</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="allergy" name="allergy" value="">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="15" class="col-sm-2 control-label">既往病史: 疾病1</label>
                     <div class="col-sm-3">
                         <select id="15" class="selectpicker show-tick form-control" name="disease1">
@@ -360,7 +390,7 @@
                 <div class="form-group">
                     <label for="21" class="col-sm-2 control-label">家族病史:父亲</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="21" name="f1desease" value="">
+                        <input type="text" class="form-control" id="21" name="f1desease" value="" placeholder="请输入家庭成员的患病情况">
                     </div>
                 </div>
                 <div class="form-group">
@@ -387,12 +417,131 @@
                         <input type="text" class="form-control" id="25" name="inheridesease" value="" placeholder="请输入疾病名称">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="26" class="col-sm-2 control-label">锻炼频率</label>
+                    <div class="col-sm-2">
+                        <select id="26" class="selectpicker show-tick form-control" name="exerfre">
+                            <option>每天</option>
+                            <option>每周一次以上</option>
+                            <option>偶尔</option>
+                            <option>不锻炼</option>
+                        </select>
+                    </div>
+                    <label for="27" class="col-sm-1 control-label">锻炼方式</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="27" name="exeway" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="28" class="col-sm-2 control-label">锻炼时间(分钟/天)</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="28" name="exetime" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="29" class="col-sm-2 control-label">饮食习惯</label>
+                    <div class="col-sm-4">
+                        <select id="29" class="selectpicker show-tick form-control" name="eathabit">
+                            <option>无明显嗜好</option>
+                            <option>荤素均衡</option>
+                            <option>荤食为主</option>
+                            <option>素食为主</option>
+                            <option>嗜盐</option>
+                            <option>嗜油</option>
+                            <option>嗜甜</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="30" class="col-sm-2 control-label">吸烟状况</label>
+                    <div class="col-sm-2">
+                        <select id="30" class="selectpicker show-tick form-control" name="smokestatus">
+                            <option>从不吸烟</option>
+                            <option>已戒烟</option>
+                            <option>吸烟</option>
+                        </select>
+                    </div>
+                    <label for="31" class="col-sm-1 control-label">吸烟量</label>
+                    <div class="col-sm-2">
+                        <select id="31" class="selectpicker show-tick form-control" name="smokeamount">
+                            <option>偶尔</option>
+                            <option>少量</option>
+                            <option>经常</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="32" class="col-sm-2 control-label">是否饮酒</label>
+                    <div class="col-sm-2">
+                        <select id="32" class="selectpicker show-tick form-control" name="isdrink">
+                            <option>从不饮酒</option>
+                            <option>是</option>
+                            <option>已戒酒</option>
+                        </select>
+                    </div>
+                    <label for="33" class="col-sm-1 control-label">每次饮酒量</label>
+                        <div class="col-sm-2">
+                            <select id="33" class="selectpicker show-tick form-control" name="drinkamount">
+                                <option>少量</option>
+                                <option>中量</option>
+                                <option>大量</option>
+                            </select>
+                        </div>
+                    <label for="34" class="col-sm-1 control-label">饮酒频率</label>
+                    <div class="col-sm-2">
+                            <select id="34" class="selectpicker show-tick form-control" name="drinkfre">
+                                <option>无</option>
+                                <option>偶尔</option>
+                                <option>少量</option>
+                                <option>经常</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="35" class="col-sm-2 control-label">睡眠情况</label>
+                    <div class="col-sm-2">
+                        <select id="35" class="selectpicker show-tick form-control" name="sleepstatus" >
+                            <option>良好</option>
+                            <option>睡眠困难</option>
+                            <option>早醒</option>
+                            <option>梦游</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                    <label for="36" class="col-sm-1 control-label">睡眠时间（小时）</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="36" name="sleeptime" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="37" class="col-sm-2 control-label">职业病危害因素接触史</label>
+                    <div class="col-sm-2">
+                        <select id="37" class="selectpicker show-tick form-control" name="jobmaterial" >
+                            <option>无</option>
+                            <option>粉尘</option>
+                            <option>放射物质</option>
+                            <option>物理因素</option>
+                            <option>化学物质</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                    <label for="38" class="col-sm-1 control-label">有无防护措施</label>
+                    <div class="col-sm-2">
+                        <select id="38" class="selectpicker show-tick form-control" name="isjobprotect">
+                            <option>有</option>
+                            <option>无</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary">确认修改</button>
                     </div>
                 </div>
+
+
 
             </form>
             <br><br>
