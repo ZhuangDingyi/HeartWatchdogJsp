@@ -20,13 +20,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>诊断历史</title>
+    <title>亲友健康信息</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/easy-responsive-tabs.css" type="text/css">
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -50,7 +52,7 @@
                 <li >
                     <a href="infotime.jsp">诊断历史</a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="InfoServlet?action=tend">趋势显示</a>
                 </li>
                 <li>
@@ -112,7 +114,7 @@
             <ul class="nav nav-sidebar">
                 <li><a href="homepage.jsp"><i class="glyphicon glyphicon-home"></i>  首页</a></li>
                 <li><a href="infotime.jsp"><i class="glyphicon glyphicon-cloud"></i>  诊断历史</a></li>
-                <li class="active"><a href="InfoServlet?action=tend"><i class="glyphicon glyphicon-signal"></i>  趋势显示</a></li>
+                <li ><a href="InfoServlet?action=tend"><i class="glyphicon glyphicon-signal"></i>  趋势显示</a></li>
                 <li class="dropdown">
                     <a href="#medicalreport" class="nav-header collapsed" data-toggle="collapse">
                         <i class="glyphicon glyphicon-sort"></i>
@@ -133,13 +135,16 @@
             </ul>
             <ul class="nav nav-sidebar">
                 <li><a href="perinfo.jsp"><i class="glyphicon glyphicon-user"></i>  个人信息</a></li>
-                <li><a href="count.jsp"><i class="glyphicon glyphicon-cog"></i>  账户设置</a></li><li><a href="RelaServlet?action=RelaList"> <i class="glyphicon glyphicon-plus"></i>亲友管理</a></li>
+                <li><a href="count.jsp"><i class="glyphicon glyphicon-cog"></i>  账户设置</a></li>
+                <li class="active"> <a href="RelaServlet?action=RelaList"> <i class="glyphicon glyphicon-plus"></i>亲友管理</a></li>
                 <li><a href="ill.jsp"><i class="glyphicon glyphicon-book"></i>  病理解释</a></li>
                 <li><a href="help.jsp"><i class="glyphicon glyphicon-list-alt"></i>  使用指南</a></li>
             </ul>
         </div>
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <%String relaname=(String)request.getAttribute("relaname");%>
+            <%String reid=(String)request.getAttribute("reid");%>
+            <h2 class="sub-header"><font size="6" color="#dc143c">当前显示的是您的好友 <%=relaname%> 的健康信息</font></h2>
             <div id="demoTab">
                 <ul class="resp-tabs-list hor_1">
                     <li>心率</li>
@@ -215,23 +220,23 @@
                         var y8Data = [];
                         var y9Data = [];
                         var y10Data = [];
-                        <%List infolist=(List)request.getAttribute("infoList");
-                        int len=infolist.size();
+                        <%List inforelalist=(List)request.getAttribute("infoRelaList");
+                        int len=inforelalist.size();
                         for(int i=0;i<len;i++){
-                        Info single=(Info)infolist.get(i);
+                        Info single=(Info)inforelalist.get(i);
                         %>
                         xData.push('<%=single.getDate()%>');
                         yData.push(<%=single.getXinlv()%>);
-                        y1Data.push(<%=single.getXdgs()*100%>)
-                        y2Data.push(<%=single.getSxxdgs()*100%>)
-                        y3Data.push(<%=single.getXdgh()*100%>)
-                        y4Data.push(<%=single.getFxyb()*100%>)
-                        y5Data.push(<%=single.getSxyb()*100%>)
-                        y6Data.push(<%=single.getXlbq()*100%>)
-                        y7Data.push(<%=single.getSxzb()*100%>)
-                        y8Data.push(<%=single.getFxzb()*100%>)
-                        y9Data.push(<%=single.getJjxzb()*100%>)
-                        y10Data.push(<%=single.getFc()*100%>)
+                        y1Data.push(<%=single.getXdgs()%>)
+                        y2Data.push(<%=single.getSxxdgs()%>)
+                        y3Data.push(<%=single.getXdgh()%>)
+                        y4Data.push(<%=single.getFxyb()%>)
+                        y5Data.push(<%=single.getSxyb()%>)
+                        y6Data.push(<%=single.getXlbq()%>)
+                        y7Data.push(<%=single.getSxzb()%>)
+                        y8Data.push(<%=single.getFxzb()%>)
+                        y9Data.push(<%=single.getJjxzb()%>)
+                        y10Data.push(<%=single.getFc()%>)
                         <%}%>
                         var option = {
                             title: {
@@ -354,70 +359,70 @@
                     </script>
 
                     <script type="text/javascript">
-                    var myChart = echarts.init(document.getElementById("chart2"));
-                    var option = {
-                        title: {
-                            left: 'center',
-                            text: "室性心动过速疑似率趋势图",
-                            textStyle: {fontSize: 24, color: "black"},
-                            subtextStyle: {fontSize: 12}
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            formatter:function(params)
-                            {
-                                var relVal = params[0].name;
-                                for (var i = 0, l = params.length; i < l; i++) {
-                                    relVal += '<br/>' + params[i].seriesName + ' : ' + params[i].value+"%";
-                                }
-                                return relVal;
-                            }
-                        },
-                        toolbox: {
-                            show : true,
-                            feature : {
-                                mark : {show: true},
-                                dataZoom : {show: true},
-                                dataView : {show: true,readOnly:true},
-                                magicType : {show: true, type: ['line', 'bar']},
-                                restore : {show: true},
-                                saveAsImage : {show: true}
-                            }
-                        },
-                        dataZoom : {
-                            show : true,
-                            realtime : true,
-                            start : 20,
-                            end : 80
-                        },
-                        calculable: true,
-                        xAxis: {
-                            type: 'category',
-                            boundaryGap: false,
-                            name: '上传时间',
-                            data: xData
-                        },
-                        yAxis: {
-                            type: 'value',
-                            name: '室性心动过速疑似率',
-                            axisLabel: {  formatter: '{value} %' }
-                        },
-                        series: [{
-                            name:'疑似率',
-                            type: 'line', <!--图表类型-->
-                            <!--平滑显示-->
-                            symbol: 'none',
-                            sampling: 'average', <!--折线图在数据量远大于像素点时候的降采样策略，开启后可以有效的优化图表的绘制效率，average即取过滤点的平均值-->
-                            itemStyle: {
-                                normal: {
-                                    color: 'rgb(255, 70, 131)'  <!--线条颜色-->
+                        var myChart = echarts.init(document.getElementById("chart2"));
+                        var option = {
+                            title: {
+                                left: 'center',
+                                text: "室性心动过速疑似率趋势图",
+                                textStyle: {fontSize: 24, color: "black"},
+                                subtextStyle: {fontSize: 12}
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                formatter:function(params)
+                                {
+                                    var relVal = params[0].name;
+                                    for (var i = 0, l = params.length; i < l; i++) {
+                                        relVal += '<br/>' + params[i].seriesName + ' : ' + params[i].value+"%";
+                                    }
+                                    return relVal;
                                 }
                             },
-                            data: y2Data
-                        }]
-                    };
-                    myChart.setOption(option);
-                </script>
+                            toolbox: {
+                                show : true,
+                                feature : {
+                                    mark : {show: true},
+                                    dataZoom : {show: true},
+                                    dataView : {show: true,readOnly:true},
+                                    magicType : {show: true, type: ['line', 'bar']},
+                                    restore : {show: true},
+                                    saveAsImage : {show: true}
+                                }
+                            },
+                            dataZoom : {
+                                show : true,
+                                realtime : true,
+                                start : 20,
+                                end : 80
+                            },
+                            calculable: true,
+                            xAxis: {
+                                type: 'category',
+                                boundaryGap: false,
+                                name: '上传时间',
+                                data: xData
+                            },
+                            yAxis: {
+                                type: 'value',
+                                name: '室性心动过速疑似率',
+                                axisLabel: {  formatter: '{value} %' }
+                            },
+                            series: [{
+                                name:'疑似率',
+                                type: 'line', <!--图表类型-->
+                                <!--平滑显示-->
+                                symbol: 'none',
+                                sampling: 'average', <!--折线图在数据量远大于像素点时候的降采样策略，开启后可以有效的优化图表的绘制效率，average即取过滤点的平均值-->
+                                itemStyle: {
+                                    normal: {
+                                        color: 'rgb(255, 70, 131)'  <!--线条颜色-->
+                                    }
+                                },
+                                data: y2Data
+                            }]
+                        };
+                        myChart.setOption(option);
+                    </script>
 
                     <script type="text/javascript">
                         var myChart = echarts.init(document.getElementById("chart3"));
@@ -941,8 +946,34 @@
                     </script>
 
                 </div>
-    </div>
+            </div>
 
+
+            <%--接下来是亲友记录--%>
+            <div>
+                <table  id="teacher_table" data-toggle="table" data-url="RelaServlet?action=RelaSelectInfo&para=<%=reid%>"
+                        data-method="post"
+                        data-query-params="queryParams"
+                        data-toolbar="#toolbar"
+                        data-pagination="true"
+                        data-search="true"
+                        data-show-refresh="true"
+                        data-show-toggle="true"
+                        data-show-columns="true"
+                        data-page-size="10"
+                <%--data-pageList:="[10, 25, 50, 100]"--%>
+                        data-striped="true">
+                    <thead>
+                    <tr>
+                        <th data-field="id" class="col-sm-3 col-md-1">编号</th>
+                        <th data-field="date" class="col-sm-3 col-md-2">记录时间</th>
+                        <th data-field="read" align="center" class="col-sm-3 col-md-2">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+                <%--<p id="test">12345</p>--%>
+                <br>
+            </div>
             </br></br>
         </div>
     </div>
@@ -968,6 +999,8 @@
 <!-- 包括所有已编译的插件 -->
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/easyResponsiveTabs.js"></script>
+<script src="//cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
 <script>
     $(document).ready(function() {
         //Horizontal Tab

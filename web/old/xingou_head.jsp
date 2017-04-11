@@ -41,7 +41,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a href="en.jsp" target="_top">退出登录</td>
+            <td><a href="en.jsp" target="_top">退出登陆</td>
         </tr>
     </table>
 </div>

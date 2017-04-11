@@ -152,7 +152,7 @@
 <script type="text/javascript">
     function reg(form) {
         if (form.username.value == "") {
-            swal({title:"错误",text:"用户不能为空！",type:"info"});
+            swal({title:"错误",text:"用户名不能为空！",type:"info"});
             return false;
         }
         if (form.passwd.value == "") {
@@ -182,7 +182,7 @@
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.backstretch.min.js"></script>
-<script src="js/scripts1.js"></script>
+<script src="js/scripts1.js"></script><%--这是冒泡的js--%>
 <script src="js/sweet-alert.min.js"></script>
 
 </body>

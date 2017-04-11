@@ -185,6 +185,59 @@ public class UserDao {
         }
         return mark;
     }
+    public int userQueryId(String username){
+        String sql = "select * from users where uname='"+username+"'";
+        ResultSet rs = this.connection.executeQuery(sql);
+        int reid=0;
+        try {
+            if (rs != null && rs.next()) {
+                reid=rs.getInt("uid");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return reid;
+    }//用在添加好友
+    public String userQueryName(int id){
+        String sql = "select * from users where uid='"+id+"'";
+        ResultSet rs = this.connection.executeQuery(sql);
+        String uname=null;
+        try {
+            if (rs != null && rs.next()) {
+                uname=rs.getString("uname");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return uname;
+    }
+    public String userQueryGender(int id){
+        String sql = "select * from users where uid='"+id+"'";
+        ResultSet rs = this.connection.executeQuery(sql);
+        String gender=null;
+        try {
+            if (rs != null && rs.next()) {
+                gender=rs.getString("gender");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return gender;
+    }
+    public int userQueryAge(int id){
+        String sql = "select * from users where uid='"+id+"'";
+        ResultSet rs = this.connection.executeQuery(sql);
+        int age=0;
+        try {
+            if (rs != null && rs.next()) {
+                age=rs.getInt("age");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return age;
+    }
+
     /*
     // 获取数据库连接Connection对象
     Connection conn = ConnectDB.getConnection();

@@ -131,7 +131,6 @@ public class InfoServlet extends HttpServlet {
     }
     public void singleInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         InfoDao infodao = new InfoDao();
-        System.out.println(request.getParameter("id"));
         int id = MyTools.strToint(request.getParameter("id"));
         HttpSession session = request.getSession();
         // 获取用户对象
