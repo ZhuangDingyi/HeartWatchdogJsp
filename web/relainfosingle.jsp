@@ -407,6 +407,7 @@
     can.fillText("<%=single.getCon10()%>",900/scale,1335/scale)
     can.moveTo(75/scale,1340/scale);
     can.lineTo(975/scale,1340/scale);
+    can.fillText("<提示>报告仅供参考，请结合临床情况",640/scale,1370/scale);
     can.stroke();
 </script>
 <script>
