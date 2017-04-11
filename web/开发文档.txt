@@ -243,6 +243,46 @@ alter table users add column f4desease varchar(30);
 
 alter table users add column inheridesease varchar(30);
 
+relaservlet中应该包含的类有 查询好友列表，验证消息列表，查看好友健康信息，删除好友，（给好友发消息  待补充）
+加好友（建一行，status为0），拒绝好友请求(删除该行)
+
+4.10今天待完成，加好友后弹出框还没设置好，亲友互相查看信息的功能还没实现
+在开发的时候遇到的小坑，延时之中的函数要单独写
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="css/sweet-alert.css" rel="stylesheet">
+</head>
+<body>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/sweet-alert.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        swal({
+            type:"error",
+            title: "该用户不存在！",
+            text: '<a href="RelaServlet?action=RelaList#demoTab4" role="button"><font size="5" color="green"> 点此返回</font></a>。<br>5秒后自动返回。',
+            animation:"slide-from-top",
+            html: true,
+            timer: 5000,
+            showConfirmButton: false
+        });
+    })
+    window.onload = function(){
+        setTimeout(fun,5000);
+    }
+    function fun(){
+        window.location="RelaServlet?action=RelaList#demoTab4"
+        }
+</script>
+</body>
+</html>
+
+
+
+
+
 
 
 

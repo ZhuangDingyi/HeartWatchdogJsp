@@ -1,13 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/3/28
-  Time: 15:55
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="com.zyf.Info" %>
 <%@ page import="com.zyf.tools.MyTools" %>
-<%@ page import="com.zyf.User" %><%--
+<%@ page import="com.zyf.User" %>
+<%@ page import="java.text.ParsePosition" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.zyf.dao.UserDao" %>
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/3/22
@@ -51,7 +49,7 @@
 
                         <a href="homepage.jsp">首页</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="infotime.jsp">诊断历史</a>
                         </li>
                         <li>
@@ -143,7 +141,7 @@
         <%--</div>--%>
         <%--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">--%>
         <br>
-        <canvas id="ecg" width="1050px" height="1485px" style="border:black 1px solid">您的浏览器不支持canvas</canvas><br>
+        <canvas id="ecg" width="793.7px" height="1122.52px" style="border:black 1px solid">您的浏览器不支持canvas</canvas><br>
         <button type="button" class="btn btn-primary" onclick="download()">下载心电报告</button>
         <%--</div>--%>
         <br><br><br><br><br>
@@ -174,12 +172,31 @@
 <script src="js/html2canvas.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    <%Info single=(Info)request.getAttribute("infosingle");
+    <%
+     String relaid=(String)request.getAttribute("reid");
+     int reid=MyTools.strToint(relaid);
+     UserDao userdao=new UserDao();
+     String relaname=(String)userdao.userQueryName(reid);
+     String relagender=(String)userdao.userQueryGender(reid);
+     int relaage=(int)userdao.userQueryAge(reid);
+    Info single=(Info)request.getAttribute("infosingle");
     User user=(User)session.getAttribute("user");
+//    formatter中format是将时间转换为字符串，而parse是将字符串转化为时间
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date starttime=formatter.parse(single.getDate());
+        SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String time=formatter1.format(starttime);
+        System.out.println(time);
+        long forendtime=(starttime.getTime()/1000)+20;
+        Date starttime2= formatter.parse(single.getDate());
+        starttime2.setTime(forendtime*1000);
+        String endtime=formatter.format(starttime2);
     %>
+    var scale=5*25.4/96;
     var canvas=document.getElementById('ecg');
     can=canvas.getContext('2d');
-    can.font="30px Arial";
+    can.font="23px Arial";
+
     var spaceShip=new Image();
     spaceShip.addEventListener('load',eventShipLoaded,false);
     spaceShip.src="images/logo.png"
@@ -187,87 +204,92 @@
         drawScreen();
     }
     function drawScreen(){
-        can.drawImage(spaceShip,790,60,177,59.2)
+        can.drawImage(spaceShip,790/scale,60/scale,177/scale,59.2/scale)
     }
 
     can.textAlign="start";
-    can.fillText("心狗智能硬件心电检测报告",70,100);
-    can.moveTo(75,120);
-    can.lineTo(975,120);
-    can.moveTo(75,130);
-    can.lineTo(975,130);
+    can.fillText("心电检测报告",430/scale,100/scale);
+    can.moveTo(75/scale,120/scale);
+    can.lineTo(975/scale,120/scale);
+    can.moveTo(75/scale,130/scale);
+    can.lineTo(975/scale,130/scale);
     can.stroke();
     can.beginPath();
-    can.font="20px Arial";
+    can.font="15px Arial";
     can.textAlign="start"
-    can.fillText("用户: <%=user.getUname()%>",100,170);
-    can.fillText("性别:<%=user.getGender()%>",560,170);
-    can.fillText("年龄:<%=user.getAge()%>",720,170);
-    can.moveTo(75,185);
-    can.lineTo(975,185);
+    can.fillText("姓名: <%=relaname%>",100/scale,170/scale);
+    can.fillText("性别:<%=relagender%>",300/scale,170/scale);
+    can.fillText("年龄:<%=relaage%>",500/scale,170/scale);
+    can.fillText("时间: <%=time%>",700/scale,170/scale);
+    can.moveTo(75/scale,185/scale);
+    can.lineTo(975/scale,185/scale);
     can.stroke();
-    can.fillText("测试时间: <%=single.getDate()%>",100,220);
-    can.fillText("时长: 20s",600,220);
-    can.fillText("心率 :<%=single.getXinlv()%>bpm",100,250);
-    can.fillText("增益:10mm/mV",600,250);
-    can.fillText("走速:25mm/s",800,250);
-    can.fillText("PR/QT/QTc间期:  176/340/345 ms",100,280);
+    <%--can.fillText("测试时间: <%=single.getDate()%>",100/scale,220/scale);--%>
+    <%--can.fillText("时长: 20s",600/scale,220/scale);--%>
+    <%--can.fillText("心率 :<%=single.getXinlv()%>bpm",100/scale,250/scale);--%>
+
+    can.fillText("PR间期:176ms",100/scale,230/scale);
+    can.fillText("QT间期:340ms",400/scale,230/scale);
+    can.fillText("QTc间期:345ms",700/scale,230/scale);
+    can.fillText("心率 :<%=single.getXinlv()%>bpm",100/scale,270/scale);
+    can.fillText("P时限： 128ms",400/scale,270/scale);
+    can.fillText("RQS时限： 96ms",700/scale,270/scale);
     can.beginPath();
     can.strokeStyle ="#f1c1c5";
     can.lineWidth=0.18;
-    for (var x=75;x<976;x +=5){
-        can.moveTo(x,300);
-        can.lineTo(x,950);
+    for (var x=75/scale;x<976/scale;x +=5/scale){
+        can.moveTo(x,290/scale);
+        can.lineTo(x,990/scale);
         can.stroke();
     }
-    for (var y=300;y<951;y+=5){
-        can.moveTo(75,y);
-        can.lineTo(975,y);
+    for (var y=290/scale;y<991/scale;y+=5/scale){
+        can.moveTo(75/scale,y);
+        can.lineTo(975/scale,y);
         can.stroke();
     }
     can.beginPath();
     can.lineWidth=0.4;
     can.strokeStyle ="#e03433";// "#f1dedf";"#f0adaa"//"#e0514b"
-    for (var x=75;x<976;x +=25){
-        can.moveTo(x,300);
-        can.lineTo(x,950);
+    for (var x=75/scale;x<976/scale;x +=25/scale){
+        can.moveTo(x,290/scale);
+        can.lineTo(x,990/scale);
         can.stroke();
     }
-    for (var y=300;y<951;y+=25){
-        can.moveTo(75,y);
-        can.lineTo(975,y);
+    for (var y=290/scale;y<991/scale;y+=25/scale){
+        can.moveTo(75/scale,y);
+        can.lineTo(975/scale,y);
         can.stroke();
     }
-
+    //这一部分是标定符号
     can.beginPath();
     can.lineWidth=2;
     can.strokeStyle="#000";
-    can.moveTo(75,410);
-    can.lineTo(80,410);
-    can.lineTo(80,360);
-    can.lineTo(95,360);
-    can.lineTo(95,410);
-    can.lineTo(100,410);
-    can.moveTo(80,415);
-    can.lineTo(95,415);
-    can.moveTo(85,415);
-    can.lineTo(85,430);
-    can.moveTo(90,415);
-    can.lineTo(90,430);
-    can.moveTo(80,430);
-    can.lineTo(95,430);
-    can.moveTo(75,635);
-    can.lineTo(80,635);
-    can.lineTo(80,585);
-    can.lineTo(95,585);
-    can.lineTo(95,635);
-    can.lineTo(100,635);
-    can.moveTo(75,860);
-    can.lineTo(80,860);
-    can.lineTo(80,810);
-    can.lineTo(95,810);
-    can.lineTo(95,860);
-    can.lineTo(100,860);
+    can.moveTo(75/scale,450/scale);
+    can.lineTo(80/scale,450/scale);
+    can.lineTo(80/scale,400/scale);
+    can.lineTo(95/scale,400/scale);
+    can.lineTo(95/scale,450/scale);
+    can.lineTo(100/scale,450/scale);
+    can.moveTo(80/scale,455/scale);
+    can.lineTo(95/scale,455/scale);
+    can.moveTo(85/scale,455/scale);
+    can.lineTo(85/scale,470/scale);
+    can.moveTo(90/scale,455/scale);
+    can.lineTo(90/scale,470/scale);
+    can.moveTo(80/scale,470/scale);
+    can.lineTo(95/scale,470/scale);
+    can.moveTo(75/scale,675/scale);
+    can.lineTo(80/scale,675/scale);
+    can.lineTo(80/scale,635/scale);
+    can.lineTo(95/scale,635/scale);
+    can.lineTo(95/scale,675/scale);
+    can.lineTo(100/scale,675/scale);
+    can.moveTo(75/scale,900/scale);
+    can.lineTo(80/scale,900/scale);
+    can.lineTo(80/scale,850/scale);
+    can.lineTo(95/scale,850/scale);
+    can.lineTo(95/scale,900/scale);
+    can.lineTo(100/scale,900/scale);
     can.stroke();
 
     var xData = [];
@@ -286,93 +308,105 @@
     <%}%>
     can.beginPath();
     can.lineWidth=2;
-    can.moveTo(100,410-yData[0]/30000);
+    can.moveTo(100/scale,(450-yData[0]/310800)/scale);
     for(var x=1;x<3585;x++){
-        can.lineTo(100+0.24414*x,410-yData[x]/30000)
+        can.lineTo((100+0.24414*x)/scale,(450-yData[x]/310800)/scale)//标定之前是30000
     }
     can.stroke();
     can.beginPath();
-    can.moveTo(100,635-yData[3584]/30000);
+    can.moveTo(100/scale,(675-yData[3584]/310800)/scale);
     for(var x=3585;x<7169;x++){
-        can.lineTo(100+0.24414*(x-3584),635-yData[x]/30000)
+        can.lineTo((100+0.24414*(x-3584))/scale,(675-yData[x]/310800)/scale)
     }
     can.stroke();
     can.beginPath();
-    can.moveTo(100,860-yData[7168]/30000);
+    can.moveTo(100/scale,(900-yData[7168]/310800)/scale);
     for(var x=7169;x<yData.length+1;x++){
-        can.lineTo(100+0.24414*(x-7168),860-yData[x]/30000)
+        can.lineTo((100+0.24414*(x-7168))/scale,(900-yData[x]/310800)/scale)
     }
+    can.stroke();
+    can.beginPath();
+
+    can.lineWidth=2;
+    can.font="18px Arial";
+    <%--can.fillText("增益:10mm/mV",600/scale,250/scale);--%>
+    <%--can.fillText("走速:25mm/s",800/scale,250/scale);--%>
+    can.fillText("<%=single.getDate()%>",100/scale,330/scale);
+    can.fillText("增益:10mm/mV",600/scale,330/scale);
+    can.fillText("走速:25mm/s",800/scale,330/scale);
+
+    can.fillText("<%=endtime%>",750/scale,975/scale);
     can.stroke();
     can.beginPath();
     can.lineWidth=1;
-    can.font="20px Arial";
+    can.font="15px Arial";
     can.textAlign="start"
-    can.fillText("NO.",100,1030);
-    can.fillText("检测项目",300,1030);
-    can.fillText("疑似率（%）",600,1030);
-    can.fillText("结论",900,1030);
-    can.moveTo(75,1040);
-    can.lineTo(975,1040);
-    can.fillText("1",110,1065)
-    can.fillText("心动过速",300,1065)
-    can.fillText("<%=percentFormat.format(single.getXdgs())%>",630,1065)
-    can.fillText("<%=single.getCon1()%>",900,1065)
-    can.moveTo(75,1070);
-    can.lineTo(975,1070);
-    can.fillText("2",110,1095)
-    can.fillText("室性心动过速",300,1095)
-    can.fillText("<%=percentFormat.format(single.getSxxdgs())%>",630,1095)
-    can.fillText("<%=single.getCon2()%>",900,1095)
-    can.moveTo(75,1100);
-    can.lineTo(975,1100);
-    can.fillText("3",110,1125)
-    can.fillText("心动过缓",300,1125)
-    can.fillText("<%=percentFormat.format(single.getXdgh())%>",630,1125)
-    can.fillText("<%=single.getCon3()%>",900,1125)
-    can.moveTo(75,1130);
-    can.lineTo(975,1130);
-    can.fillText("4",110,1155)
-    can.fillText("房性逸搏",300,1155)
-    can.fillText("<%=percentFormat.format(single.getFxyb())%>",630,1155)
-    can.fillText("<%=single.getCon4()%>",900,1155)
-    can.moveTo(75,1160);
-    can.lineTo(975,1160);
-    can.fillText("5",110,1185)
-    can.fillText("室性逸搏",300,1185)
-    can.fillText("<%=percentFormat.format(single.getSxyb())%>",630,1185)
-    can.fillText("<%=single.getCon5()%>",900,1185)
-    can.moveTo(75,1190);
-    can.lineTo(975,1190);
-    can.fillText("6",110,1215)
-    can.fillText("心率不齐",300,1215)
-    can.fillText("<%=percentFormat.format(single.getXlbq())%>",630,1215)
-    can.fillText("<%=single.getCon6()%>",900,1215)
-    can.moveTo(75,1220);
-    can.lineTo(975,1220);
-    can.fillText("7",110,1245)
-    can.fillText("室性早搏",300,1245)
-    can.fillText("<%=percentFormat.format(single.getSxzb())%>",630,1245)
-    can.fillText("<%=single.getCon7()%>",900,1245)
-    can.moveTo(75,1250);
-    can.lineTo(975,1250);
-    can.fillText("8",110,1275)
-    can.fillText("房性早搏",300,1275)
-    can.fillText("<%=percentFormat.format(single.getFxzb())%>",630,1275)
-    can.fillText("<%=single.getCon8()%>",900,1275)
-    can.moveTo(75,1280);
-    can.lineTo(975,1280);
-    can.fillText("9",110,1305)
-    can.fillText("交界性早搏",300,1305)
-    can.fillText("<%=percentFormat.format(single.getJjxzb())%>",630,1305)
-    can.fillText("<%=single.getCon9()%>",900,1305)
-    can.moveTo(75,1310);
-    can.lineTo(975,1310);
-    can.fillText("10",110,1335)
-    can.fillText("房颤",300,1335)
-    can.fillText("<%=percentFormat.format(single.getFc())%>",630,1335)
-    can.fillText("<%=single.getCon10()%>",900,1335)
-    can.moveTo(75,1340);
-    can.lineTo(975,1340);
+    can.fillText("NO.",100/scale,1030/scale);
+    can.fillText("检测项目",300/scale,1030/scale);
+    can.fillText("疑似率（%）",600/scale,1030/scale);
+    can.fillText("结论",900/scale,1030/scale);
+    can.moveTo(75/scale,1040/scale);
+    can.lineTo(975/scale,1040/scale);
+    can.fillText("1",110/scale,1065/scale)
+    can.fillText("心动过速",300/scale,1065/scale)
+    can.fillText("<%=percentFormat.format(single.getXdgs())%>",630/scale,1065/scale)
+    can.fillText("<%=single.getCon1()%>",900/scale,1065/scale)
+    can.moveTo(75/scale,1070/scale);
+    can.lineTo(975/scale,1070/scale);
+    can.fillText("2",110/scale,1095/scale)
+    can.fillText("室性心动过速",300/scale,1095/scale)
+    can.fillText("<%=percentFormat.format(single.getSxxdgs())%>",630/scale,1095/scale)
+    can.fillText("<%=single.getCon2()%>",900/scale,1095/scale)
+    can.moveTo(75/scale,1100/scale);
+    can.lineTo(975/scale,1100/scale);
+    can.fillText("3",110/scale,1125/scale)
+    can.fillText("心动过缓",300/scale,1125/scale)
+    can.fillText("<%=percentFormat.format(single.getXdgh())%>",630/scale,1125/scale)
+    can.fillText("<%=single.getCon3()%>",900/scale,1125/scale)
+    can.moveTo(75/scale,1130/scale);
+    can.lineTo(975/scale,1130/scale);
+    can.fillText("4",110/scale,1155/scale)
+    can.fillText("房性逸搏",300/scale,1155/scale)
+    can.fillText("<%=percentFormat.format(single.getFxyb())%>",630/scale,1155/scale)
+    can.fillText("<%=single.getCon4()%>",900/scale,1155/scale)
+    can.moveTo(75/scale,1160/scale);
+    can.lineTo(975/scale,1160/scale);
+    can.fillText("5",110/scale,1185/scale)
+    can.fillText("室性逸搏",300/scale,1185/scale)
+    can.fillText("<%=percentFormat.format(single.getSxyb())%>",630/scale,1185/scale)
+    can.fillText("<%=single.getCon5()%>",900/scale,1185/scale)
+    can.moveTo(75/scale,1190/scale);
+    can.lineTo(975/scale,1190/scale);
+    can.fillText("6",110/scale,1215/scale)
+    can.fillText("心率不齐",300/scale,1215/scale)
+    can.fillText("<%=percentFormat.format(single.getXlbq())%>",630/scale,1215/scale)
+    can.fillText("<%=single.getCon6()%>",900/scale,1215/scale)
+    can.moveTo(75/scale,1220/scale);
+    can.lineTo(975/scale,1220/scale);
+    can.fillText("7",110/scale,1245/scale)
+    can.fillText("室性早搏",300/scale,1245/scale)
+    can.fillText("<%=percentFormat.format(single.getSxzb())%>",630/scale,1245/scale)
+    can.fillText("<%=single.getCon7()%>",900/scale,1245/scale)
+    can.moveTo(75/scale,1250/scale);
+    can.lineTo(975/scale,1250/scale);
+    can.fillText("8",110/scale,1275/scale)
+    can.fillText("房性早搏",300/scale,1275/scale)
+    can.fillText("<%=percentFormat.format(single.getFxzb())%>",630/scale,1275/scale)
+    can.fillText("<%=single.getCon8()%>",900/scale,1275/scale)
+    can.moveTo(75/scale,1280/scale);
+    can.lineTo(975/scale,1280/scale);
+    can.fillText("9",110/scale,1305/scale)
+    can.fillText("交界性早搏",300/scale,1305/scale)
+    can.fillText("<%=percentFormat.format(single.getJjxzb())%>",630/scale,1305/scale)
+    can.fillText("<%=single.getCon9()%>",900/scale,1305/scale)
+    can.moveTo(75/scale,1310/scale);
+    can.lineTo(975/scale,1310/scale);
+    can.fillText("10",110/scale,1335/scale)
+    can.fillText("房颤",300/scale,1335/scale)
+    can.fillText("<%=percentFormat.format(single.getFc())%>",630/scale,1335/scale)
+    can.fillText("<%=single.getCon10()%>",900/scale,1335/scale)
+    can.moveTo(75/scale,1340/scale);
+    can.lineTo(975/scale,1340/scale);
     can.stroke();
 </script>
 <script>

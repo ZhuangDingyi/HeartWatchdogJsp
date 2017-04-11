@@ -223,7 +223,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>用户登陆-心狗健康信息管理系统</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <%--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">--%>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login/font-awesome.min.css">
     <link rel="stylesheet" href="css/login/form-elements.css">

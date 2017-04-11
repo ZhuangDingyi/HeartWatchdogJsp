@@ -49,7 +49,8 @@
     <script src="js/sweet-alert.min.js"></script>
     <script>
     $(document).ready(function(){
-    swal("您好，欢迎来到Jquery！");
+        swal({title:"警告",text:"密码不能为空！",type:"warning"});
+        window.location.href="register.jsp";
     })
     document.querySelector('.showcase.sweet button').onclick = function(){
         swal({title:"警告",text:"密码不能为空！",type:"warning"});

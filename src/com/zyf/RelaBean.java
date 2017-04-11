@@ -10,6 +10,7 @@ public class RelaBean {
     private int reid;
     private String relaname;
     private boolean status;
+    private String information;
     public int getId() {
         return id;
     }
@@ -56,5 +57,13 @@ public class RelaBean {
 
     public void setRelaname(String relaname) {
         this.relaname = relaname;
+    }
+
+    public String getinformation() {
+        return information;
+    }
+
+    public void setinformation(String information) {
+        this.information = information;
     }
 }

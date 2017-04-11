@@ -59,7 +59,7 @@
                     <a href="suggestion.jsp">意见反馈</a>
                 </li>
                 <li>
-                    <a href="UserServlet?action=exit">退出登录</a>
+                    <a href="UserServlet?action=exit">退出登陆</a>
                 </li>
             </ul>
 
@@ -71,7 +71,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="homepage.jsp"><i class="glyphicon glyphicon-th-large"></i>  首页</a></li>
+                <li><a href="homepage.jsp"><i class="glyphicon glyphicon-home"></i>  首页</a></li>
                 <li><a href="infotime.jsp"><i class="glyphicon glyphicon-cloud"></i>  诊断历史</a></li>
                 <li><a href="InfoServlet?action=tend"><i class="glyphicon glyphicon-signal"></i>  趋势显示</a></li>
                 <li class="dropdown">

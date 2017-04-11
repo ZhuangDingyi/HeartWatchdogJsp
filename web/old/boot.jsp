@@ -62,7 +62,7 @@
                                 <a href="suggestion.jsp">意见反馈</a>
                             </li>
                             <li>
-                                <a href="UserServlet?action=exit">退出登录</a>
+                                <a href="UserServlet?action=exit">退出登陆</a>
                             </li>
                         </ul>
                         <!--<form class="navbar-form navbar-left" role="search" placeholder="Search">
