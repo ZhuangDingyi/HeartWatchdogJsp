@@ -29,7 +29,7 @@ create table users(
    uid int(20) unsigned not null,
    fileaddr varchar(30) not null,
    filedate varchar(20) not null,
-   fileinfo varchar(320),
+   fileinfo varchar(240),
    foreign key (uid) references users(uid)
   )ENGINE=InnoDB DEFAULT CHARSET=utf8
   info表
@@ -279,7 +279,36 @@ relaservlet中应该包含的类有 查询好友列表，验证消息列表，�
 </body>
 </html>
 
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="css/sweet-alert.css" rel="stylesheet">
+</head>
+<body>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/sweet-alert.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        swal({
+            type:"error",
+            title: "提交失败",
+            text: '<a href="suggestion.jsp" role="button"><font size="5" color="green"> 点此返回</font></a>。<br>3秒后自动返回。',
+            animation:"slide-from-top",
+            html: true,
+            timer: 3000,
+            showConfirmButton: false
+        });
+    })
+    window.onload = function(){
+        setTimeout(fun,3000);
+    }
+    function fun(){
+        window.location="suggestion.jsp"
+        }
+</script>
+</body>
+</html>
 
 
 

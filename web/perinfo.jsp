@@ -106,7 +106,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h2>个人信息</h2>
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered table-responsive ">
                     <%
                         User user = (User) session.getAttribute("user");
                         if (user == null) {
@@ -173,16 +173,152 @@
                         <td><b>身高(cm)</b></td>
                         <td><%=user.getHeight()%>
                         </td>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
                         <td><b>体重(kg)</b></td>
                         <td><%=user.getWeight()%>
                         </td>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
                         <td><b>身份证号</b></td>
                         <td><%=user.getIden()%>
                         </td>
+                    </tr>
+                    <tr>
+                        <td><b>民族</b></td>
+                        <td><%=user.getNationality()%>
+                        </td>
+                        <td><b>工作单位</b></td>
+                        <td><%=user.getCompany()%>
+                        </td>
+                        <td><b>文化程度</b></td>
+                        <td><%=user.getEdu()%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>职业</b></td>
+                        <td><%=user.getJob()%>
+                        </td>
+                        <td><b>婚姻</b></td>
+                        <td><%=user.getMarry()%>
+                        </td>
+                        <td><b>血型</b></td>
+                        <td><%=user.getBloodtype()%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>健康状态自我评估</b></td>
+                        <td><%=user.getSelfevaluate()%>
+                        </td>
+                        <td><b>心理状况</b></td>
+                        <td><%=user.getMentality()%>
+                        </td>
+                        <td><b>过敏药物史</b></td>
+                        <td><%=user.getAllergy()%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" style="vertical-align: middle;text-align: center;"><b>既往病史</b></td>
+                        <td><b>疾病1</b></td>
+                        <td colspan="2"><%=user.getDesease1()%></td>
+                        <td><b>确诊时间</b></td>
+                        <td><%=user.getDtime1()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>疾病2</b></td>
+                        <td colspan="2"><%=user.getDesease2()%></td>
+                        <td><b>确诊时间</b></td>
+                        <td><%=user.getDtime2()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>疾病3</b></td>
+                        <td colspan="2"><%=user.getDesease3()%></td>
+                        <td><b>确诊时间</b></td>
+                        <td><%=user.getDtime3()%></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" style="vertical-align: middle;text-align: center;"><b>既往手术史</b></td>
+                        <td><b>手术1</b></td>
+                        <td colspan="2"><%=user.getOperation1()%></td>
+                        <td><b>手术时间</b></td>
+                        <td><%=user.getOtime1()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>手术2</b></td>
+                        <td colspan="2"><%=user.getOperation2()%></td>
+                        <td><b>手术时间</b></td>
+                        <td><%=user.getOtime2()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>手术3</b></td>
+                        <td colspan="2"><%=user.getOperation3()%></td>
+                        <td><b>手术时间</b></td>
+                        <td><%=user.getOtime3()%></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4" style="vertical-align: middle;text-align: center;"><b>家族病史</b></td>
+                        <td><b>父亲</b></td>
+                        <td colspan="4"><%=user.getF1desease()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>母亲</b></td>
+                        <td colspan="4"><%=user.getF2desease()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>兄弟姐妹</b></td>
+                        <td colspan="4"><%=user.getF3desease()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>子女</b></td>
+                        <td colspan="4"><%=user.getF4desease()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>遗传病史</b></td>
+                        <td colspan="5"><%=user.getInheridesease()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>锻炼频率</b></td>
+                        <td><%=user.getExefre()%>
+                        </td>
+                        <td><b>锻炼方式</b></td>
+                        <td><%=user.getExeway()%>
+                        </td>
+                        <td><b>锻炼时间</b></td>
+                        <td><%=user.getExetime()%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>饮食习惯</b></td>
+                        <td><%=user.getEathabit()%>
+                        </td>
+                        <td><b>吸烟情况</b></td>
+                        <td><%=user.getSmokestatus()%>
+                        </td>
+                        <td><b>吸烟量</b></td>
+                        <td><%=user.getSmokeamount()%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>是否饮酒</b></td>
+                        <td><%=user.getIsdrink()%>
+                        </td>
+                        <td><b>每次饮酒量</b></td>
+                        <td><%=user.getDrinkamount()%>
+                        </td>
+                        <td><b>饮酒频率</b></td>
+                        <td><%=user.getDrinkfre()%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>睡眠情况</b></td>
+                        <td colspan="2"><%=user.getSleepstatus()%>
+                        </td>
+                        <td><b>睡眠时间（小时</b></td>
+                        <td colspan="2"><%=user.getSleeptime()%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>职业病危害因素接触史</b></td>
+                        <td colspan="2"> <%=user.getJobmaterial()%>
+                        </td>
+                        <td ><b>有无防护措施</b></td>
+                        <td colspan="2"><%=user.getIsjobprotect()%> </td>
                     </tr>
                     </tbody>
                     <%
@@ -190,6 +326,7 @@
                 </table>
             </div>
             <a class="btn btn-primary" href="perinfomodify.jsp" role="button">修改个人信息</a>
+            <br><br><br><br>
         </div>
     </div>
 </div>

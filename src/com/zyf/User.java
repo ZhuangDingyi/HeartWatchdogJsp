@@ -25,6 +25,9 @@ public class User {
     private String job;
     private String marry;
     private String bloodtype;
+    private String selfevaluate;
+    private String mentality;
+    private String allergy;
     private String desease1;
     private String desease2;
     private String desease3;
@@ -42,6 +45,20 @@ public class User {
     private String f3desease;
     private String f4desease;
     private String inheridesease;
+    private String exefre;
+    private String exeway;
+    private String exetime;
+    private String eathabit;
+    private String smokestatus;
+    private String smokeamount;
+    private String isdrink;
+    private String drinkamount;
+    private String drinkfre;
+    private String sleepstatus;
+    private String sleeptime;
+    private String jobmaterial;
+    private String isjobprotect;
+
 
 
     public int getUid() {
@@ -330,6 +347,134 @@ public class User {
 
     public void setF4desease(String f4desease) {
         this.f4desease = f4desease;
+    }
+
+    public String getSelfevaluate() {
+        return selfevaluate;
+    }
+
+    public void setSelfevaluate(String selfevaluate) {
+        this.selfevaluate = selfevaluate;
+    }
+
+    public String getMentality() {
+        return mentality;
+    }
+
+    public void setMentality(String mentality) {
+        this.mentality = mentality;
+    }
+
+    public String getAllergy() {
+        return allergy;
+    }
+
+    public void setAllergy(String allergy) {
+        this.allergy = allergy;
+    }
+
+    public String getExefre() {
+        return exefre;
+    }
+
+    public void setExefre(String exefre) {
+        this.exefre = exefre;
+    }
+
+    public String getExeway() {
+        return exeway;
+    }
+
+    public void setExeway(String exeway) {
+        this.exeway = exeway;
+    }
+
+    public String getExetime() {
+        return exetime;
+    }
+
+    public void setExetime(String exetime) {
+        this.exetime = exetime;
+    }
+
+    public String getEathabit() {
+        return eathabit;
+    }
+
+    public void setEathabit(String eathabit) {
+        this.eathabit = eathabit;
+    }
+
+    public String getSmokestatus() {
+        return smokestatus;
+    }
+
+    public void setSmokestatus(String smokestatus) {
+        this.smokestatus = smokestatus;
+    }
+
+    public String getSmokeamount() {
+        return smokeamount;
+    }
+
+    public void setSmokeamount(String smokeamount) {
+        this.smokeamount = smokeamount;
+    }
+
+    public String getIsdrink() {
+        return isdrink;
+    }
+
+    public void setIsdrink(String isdrink) {
+        this.isdrink = isdrink;
+    }
+
+    public String getDrinkamount() {
+        return drinkamount;
+    }
+
+    public void setDrinkamount(String drinkamount) {
+        this.drinkamount = drinkamount;
+    }
+
+    public String getDrinkfre() {
+        return drinkfre;
+    }
+
+    public void setDrinkfre(String drinkfre) {
+        this.drinkfre = drinkfre;
+    }
+
+    public String getSleepstatus() {
+        return sleepstatus;
+    }
+
+    public void setSleepstatus(String sleepstatus) {
+        this.sleepstatus = sleepstatus;
+    }
+
+    public String getSleeptime() {
+        return sleeptime;
+    }
+
+    public void setSleeptime(String sleeptime) {
+        this.sleeptime = sleeptime;
+    }
+
+    public String getJobmaterial() {
+        return jobmaterial;
+    }
+
+    public void setJobmaterial(String jobmaterial) {
+        this.jobmaterial = jobmaterial;
+    }
+
+    public String getIsjobprotect() {
+        return isjobprotect;
+    }
+
+    public void setIsjobprotect(String isjobprotect) {
+        this.isjobprotect = isjobprotect;
     }
 }
 

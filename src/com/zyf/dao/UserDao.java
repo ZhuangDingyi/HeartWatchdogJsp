@@ -82,6 +82,9 @@ public class UserDao {
                 user.setJob(rs.getString("job"));
                 user.setMarry(rs.getString("marry"));
                 user.setBloodtype(rs.getString("bloodtype"));
+                user.setSelfevaluate(rs.getString("selfevaluate"));
+                user.setMentality(rs.getString("mentality"));
+                user.setAllergy(rs.getString("allergy"));
                 user.setDesease1(rs.getString("desease1"));
                 user.setDesease2(rs.getString("desease2"));
                 user.setDesease3(rs.getString("desease3"));
@@ -99,6 +102,19 @@ public class UserDao {
                 user.setF3desease(rs.getString("f3desease"));
                 user.setF4desease(rs.getString("f4desease"));
                 user.setInheridesease(rs.getString("inheridesease"));
+                user.setExefre(rs.getString("exefre"));
+                user.setExeway(rs.getString("exeway"));
+                user.setExetime(rs.getString("exetime"));
+                user.setEathabit(rs.getString("eathabit"));
+                user.setSmokestatus(rs.getString("smokestatus"));
+                user.setSmokeamount(rs.getString("smokeamount"));
+                user.setIsdrink(rs.getString("isdrink"));
+                user.setDrinkamount(rs.getString("drinkamount"));
+                user.setDrinkfre(rs.getString("drinkfre"));
+                user.setSleepstatus(rs.getString("sleepstatus"));
+                user.setSleeptime(rs.getString("sleeptime"));
+                user.setJobmaterial(rs.getString("jobmaterial"));
+                user.setIsjobprotect(rs.getString("isjobprotect"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -268,35 +284,24 @@ public class UserDao {
     return false;
 }
 */
-    public boolean userInfoModify(User user,String gender,String age,String phone,String email,String addr,String iden,String height,String weight
-//             String nationality,
-//             String company,
-//             String edu,
-//             String job,
-//             String marry,
-//             String bloodtype,
-//             String desease1,
-//             String desease2,
-//             String desease3,
-//             String dtime1,
-//             String dtime2,
-//             String dtime3,
-//             String operation1,
-//             String operation2,
-//             String operation3,
-//             String otime1,
-//             String otime2,
-//             String otime3,
-//             String f1desease,
-//             String f2desease,
-//             String f3desease,
-//             String f4desease,
-//             String inheridesease
+    public boolean userInfoModify(User user,String gender,String age,String phone,String email,String addr,String iden,String nationality, String company,
+         String edu,String job, String marry, String bloodtype, String height,String weight, String selfevaluate, String mentality,
+         String allergy, String desease1,String desease2,String desease3,String dtime1,String dtime2,String dtime3,String operation1,
+         String operation2,String operation3, String otime1, String otime2, String otime3,
+         String f1desease,String f2desease, String f3desease, String f4desease, String inheridesease, String exefre, String exeway, String exetime, String eathabit,
+         String smokestatus, String smokeamount, String isdrink, String drinkamount, String drinkfre, String sleepstatus,String sleeptime, String jobmaterial,String isjobprotect
     ) {
-        String sql = "update users set gender='" +gender + "',age='" + age + "',phone='" +phone+ "',email='" + email + "',addr='" + addr+ "',iden='" + iden+ "',height='" +height+ "',weight='" + weight +
-                "'where uid='" + user.getUid() + "'";
-//        String sql = "update users set gender='" +gender + "',age='" + age + "',phone='" +phone+ "',email='" + email + "',addr='" + addr+ "',iden='" + iden+ "',height='" +height+ "',weight='" + weight + "',nationality='"+nationality+
+//        String sql = "update users set gender='" +gender + "',age='" + age + "',phone='" +phone+ "',email='" + email + "',addr='" + addr+ "',iden='" + iden+ "',height='" +height+ "',weight='" + weight +
 //                "'where uid='" + user.getUid() + "'";
+        String sql = "update users set gender='" +gender + "',age='" + age + "',phone='" +phone+ "',email='" + email + "',addr='" + addr+ "',iden='" + iden+
+                "',nationality='" + nationality + "',company='" +company+ "',edu='"+ edu+"',job='" + job + "',marry='" + marry+ "',bloodtype='" + bloodtype+ "',height='" +height+ "',weight='" + weight +
+                "',selfevaluate='" + selfevaluate + "',mentality='" +mentality+ "',allergy='" + allergy + "',desease1='" + desease1+ "',desease2='" + desease2+ "',desease3='" +desease3+ "',dtime1='" + dtime1 +
+                "',dtime2='" + dtime2 + "',dtime3='" +dtime3+ "',operation1='" + operation1 + "',operation2='" + operation2+ "',operation3='" + operation3+ "',otime1='" +otime1+ "',otime2='" + otime2 +
+                "',otime3='" + otime3 + "',f1desease='" +f1desease+ "',f2desease='" + f2desease + "',f3desease='" + f3desease+ "',f4desease='" + f4desease+ "',inheridesease='" +inheridesease+ "',exefre='" + exefre +
+                "',exeway='" + exeway + "',exetime='" +exetime+ "',eathabit='" + eathabit + "',smokestatus='" + smokestatus+ "',smokeamount='" + smokeamount+ "',isdrink='" +isdrink+ "',drinkamount='" + drinkamount +
+                "',drinkfre='" + drinkfre + "',sleepstatus='" +sleepstatus+ "',sleeptime='" + sleeptime + "',jobmaterial='" + jobmaterial+ "',isjobprotect='" + isjobprotect+
+                "' where uid='" + user.getUid() + "'";
+
         boolean flag = this.connection.executeUpdate(sql);
         return flag;
     }
@@ -312,5 +317,3 @@ public class UserDao {
         this.connection.executeUpdate(sql);
     }
 }
-
-

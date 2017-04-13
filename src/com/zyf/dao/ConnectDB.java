@@ -3,7 +3,9 @@ package com.zyf.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+//
+//
+//已经废弃
 public class ConnectDB {
     public static Connection getConnection() {
         Connection conn = null;

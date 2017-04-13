@@ -85,7 +85,7 @@
                         <li>
                             <a href="message.jsp">消息中心</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="suggestion.jsp">意见反馈</a>
                         </li>
                         <li>
@@ -140,7 +140,23 @@
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">待补充</h1>
+            <h3 class="sub-header">感谢使用心狗产品和服务<br><br>
+
+                您宝贵的建议是心狗前进的动力，我们期待您的反馈和建议</h2><br>
+            <form class="form-horizontal" action="SuggestionServlet?action=save" method="post" onsubmit="return submit(this)">
+                <div class="form-group">
+                    <label for="1" class="col-sm-2 control-label">请留言:</label>
+                    <div class="col-sm-6">
+                        <textarea name="info" style="resize:none;width:600px;height:200px" id="1"
+                                  maxlength="200" placeholder="注意字数少于200"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">确认修改</button>
+                    </div>
+                </div>
+            </form>
 
 
             <br>
@@ -169,7 +185,15 @@
 <!-- 包括所有已编译的插件 -->
 <script src="js/bootstrap.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<
+<script>
+    function submit(form){
+        if(form.info.value==""){
+            swal({title:"提示",text:"描述不能为空！",type:"info"});
+            return false;
+        }
+    }
+</script>
 
 </body>
 </html>
