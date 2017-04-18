@@ -87,7 +87,7 @@
                 </li>
                 -->
                 <li>
-                    <a href="message.jsp">消息中心</a>
+                    <a href="message.jsp">消息通知</a>
                 </li>
                 <li>
                     <a href="suggestion.jsp">意见反馈</a>
@@ -121,18 +121,18 @@
                     </a>
                     <ul id="medicalreport" class="nav nav-list collapse secondmenu" style="height: 0px;">
                         <li>
-                            <a href="fileupload.jsp"><i class="glyphicon glyphicon-arrow-up"></i>上传医疗报告</a>
+                            <a href="fileupload.jsp"><i class="glyphicon glyphicon-upload"></i>上传医疗报告</a>
                         </li>
                         <li class="divider">
                         </li>
                         <li>
-                            <a href="FileServlet?action=list"> <i class="glyphicon glyphicon-arrow-down"></i> 下载/删除报告</a>
+                            <a href="FileServlet?action=list"> <i class="glyphicon glyphicon-download"></i> 下载/删除报告</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li><a href="perinfo.jsp"><i class="glyphicon glyphicon-user"></i>  个人信息</a></li>
+                <li>                    <a href="#perinfo" class="nav-header collapsed" data-toggle="collapse">                        <i class="glyphicon glyphicon-user"></i>                        个人信息                    </a>                    <ul id="perinfo" class="nav nav-list collapse secondmenu" style="height: 0px;">                        <li>                            <a href="perinfo.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-list-alt"></i>  健康档案</a>                        </li>                        <li class="divider">                        </li>                        <li>                            <a href="medicalhistory.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-file"></i>  电子病历</a>                        </li>                    </ul>                </li>
                 <li><a href="count.jsp"><i class="glyphicon glyphicon-cog"></i>  账户设置</a></li><li><a href="RelaServlet?action=RelaList"> <i class="glyphicon glyphicon-plus"></i>亲友管理</a></li>
                 <li><a href="ill.jsp"><i class="glyphicon glyphicon-book"></i>  病理解释</a></li>
                 <li><a href="help.jsp"><i class="glyphicon glyphicon-list-alt"></i>  使用指南</a></li>
@@ -222,16 +222,16 @@
                         %>
                         xData.push('<%=single.getDate()%>');
                         yData.push(<%=single.getXinlv()%>);
-                        y1Data.push(<%=single.getXdgs()*100%>)
-                        y2Data.push(<%=single.getSxxdgs()*100%>)
-                        y3Data.push(<%=single.getXdgh()*100%>)
-                        y4Data.push(<%=single.getFxyb()*100%>)
-                        y5Data.push(<%=single.getSxyb()*100%>)
-                        y6Data.push(<%=single.getXlbq()*100%>)
-                        y7Data.push(<%=single.getSxzb()*100%>)
-                        y8Data.push(<%=single.getFxzb()*100%>)
-                        y9Data.push(<%=single.getJjxzb()*100%>)
-                        y10Data.push(<%=single.getFc()*100%>)
+                        y1Data.push(<%=single.getXdgs()%>)
+                        y2Data.push(<%=single.getSxxdgs()%>)
+                        y3Data.push(<%=single.getXdgh()%>)
+                        y4Data.push(<%=single.getFxyb()%>)
+                        y5Data.push(<%=single.getSxyb()%>)
+                        y6Data.push(<%=single.getXlbq()%>)
+                        y7Data.push(<%=single.getSxzb()%>)
+                        y8Data.push(<%=single.getFxzb()%>)
+                        y9Data.push(<%=single.getJjxzb()%>)
+                        y10Data.push(<%=single.getFc()%>)
                         <%}%>
                         var option = {
                             title: {

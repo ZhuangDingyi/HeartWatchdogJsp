@@ -56,7 +56,7 @@
                                 <a href="count.jsp">账户设置</a>
                             </li>
                             <li>
-                                <a href="message.jsp">消息中心</a>
+                                <a href="message.jsp">消息通知</a>
                             </li>
                             <li>
                                 <a href="suggestion.jsp">意见反馈</a>

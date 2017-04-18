@@ -82,8 +82,8 @@
                             </ul>
                         </li>
                         -->
-                        <li>
-                            <a href="message.jsp">消息中心</a>
+                        <li class="active">
+                            <a href="message.jsp">消息通知</a>
                         </li>
                         <li>
                             <a href="suggestion.jsp">意见反馈</a>
@@ -116,18 +116,18 @@
                     </a>
                     <ul id="medicalreport" class="nav nav-list collapse secondmenu" style="height: 0px;">
                         <li>
-                            <a href="fileupload.jsp">    <i class="glyphicon glyphicon-arrow-up"></i>  上传医疗报告</a>
+                            <a href="fileupload.jsp">    <i class="glyphicon glyphicon-upload"></i>  上传医疗报告</a>
                         </li>
                         <li class="divider">
                         </li>
                         <li>
-                            <a href="FileServlet?action=list">    <i class="glyphicon glyphicon-arrow-down"></i>   下载/删除报告</a>
+                            <a href="FileServlet?action=list">    <i class="glyphicon glyphicon-download"></i>   下载/删除报告</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li><a href="perinfo.jsp"><i class="glyphicon glyphicon-user"></i>  个人信息</a></li>
+                <li>                    <a href="#perinfo" class="nav-header collapsed" data-toggle="collapse">                        <i class="glyphicon glyphicon-user"></i>                        个人信息                    </a>                    <ul id="perinfo" class="nav nav-list collapse secondmenu" style="height: 0px;">                        <li>                            <a href="perinfo.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-list-alt"></i>  健康档案</a>                        </li>                        <li class="divider">                        </li>                        <li>                            <a href="medicalhistory.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-file"></i>  电子病历</a>                        </li>                    </ul>                </li>
                 <li><a href="count.jsp"><i class="glyphicon glyphicon-cog"></i>  账户设置</a></li><li><a href="RelaServlet?action=RelaList"> <i class="glyphicon glyphicon-plus"></i>亲友管理</a></li>
                 <li><a href="ill.jsp"><i class="glyphicon glyphicon-book"></i>  病理解释</a></li>
                 <li><a href="help.jsp"><i class="glyphicon glyphicon-list-alt"></i>  使用指南</a></li>
@@ -138,9 +138,27 @@
 
 
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">待补充</h1>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" align="center">
 
+            <img src="images/message_top.jpg" style="width:800px;height:200px">
+            <table class="table table-responsive">
+                <tr>
+                    <th>系统公告</th>
+                    <th>时间</th>
+                </tr>
+                <tr>
+                    <td><a href="message_1.jsp">关于心狗健康管理系统正式于5月1日上线的通知</a></td>
+                    <td>2017年4月20日</td>
+                </tr>
+                <tr>
+                    <td><a href="http://mp.weixin.qq.com/s/WycncfDaQcvmf-RtVceyVQ">心狗产品荣获第十八届中国国际工业博览会二等奖</a></td>
+                    <td>2016年12月1日</td>
+                </tr>
+                <tr>
+                    <td><a href="http://mp.weixin.qq.com/s/m7sjtz5eyci4JgN8IZ0o7A">上海市科学技术委员会主任寿子琪带队参观心狗产品</a></td>
+                    <td>2016年11月23日</td>
+                </tr>
+            </table>
 
             <br>
         </div>

@@ -46,7 +46,7 @@
                     <a href="count.jsp">账户设置</a>
                 </li>
                 <li>
-                    <a href="message.jsp">消息中心</a>
+                    <a href="message.jsp">消息通知</a>
                 </li>
                 <li>
                     <a href="suggestion.jsp">意见反馈</a>
@@ -64,7 +64,7 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row clearfix">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
@@ -79,26 +79,24 @@
                     </a>
                     <ul id="medicalreport" class="nav nav-list collapse secondmenu" style="height: 0px;">
                         <li>
-                            <a href="fileupload.jsp"><i class="glyphicon glyphicon-arrow-up"></i>上传医疗报告</a>
+                            <a href="fileupload.jsp"><i class="glyphicon glyphicon-upload"></i>上传医疗报告</a>
                         </li>
                         <li class="divider">
                         </li>
                         <li>
-                            <a href="FileServlet?action=list"> <i class="glyphicon glyphicon-arrow-down"></i> 下载/删除报告</a>
+                            <a href="FileServlet?action=list"> <i class="glyphicon glyphicon-download"></i> 下载/删除报告</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li><a href="perinfo.jsp"><i class="glyphicon glyphicon-user"></i>  个人信息</a></li>
+                <li>                    <a href="#perinfo" class="nav-header collapsed" data-toggle="collapse">                        <i class="glyphicon glyphicon-user"></i>                        个人信息                    </a>                    <ul id="perinfo" class="nav nav-list collapse secondmenu" style="height: 0px;">                        <li>                            <a href="perinfo.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-list-alt"></i>  健康档案</a>                        </li>                        <li class="divider">                        </li>                        <li>                            <a href="medicalhistory.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-file"></i>  电子病历</a>                        </li>                    </ul>                </li>
                 <li><a href="count.jsp"><i class="glyphicon glyphicon-cog"></i>  账户设置</a></li><li><a href="RelaServlet?action=RelaList"> <i class="glyphicon glyphicon-plus"></i>亲友管理</a></li>
                 <li><a href="ill.jsp"><i class="glyphicon glyphicon-book"></i>  病理解释</a></li>
                 <li><a href="help.jsp"><i class="glyphicon glyphicon-list-alt"></i>  使用指南</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
             <%
                 // 获取登录的用户信息
                 User user = (User) session.getAttribute("user");
@@ -106,19 +104,66 @@
                 // 判断用户是否登录
                 if (user != null) {
             %>
-            <h2>
-                尊敬的用户<%=user.getUname() %>您好，欢迎来到心狗健康管理系统！
-            </h2>
-            <p style="font-size:30px">
-                您上一次登录时间是<%=lastlogin%>
+            <h2 class="sub-header">您的位置:首页></h2><br>
+            <p style="font-size:25px; ">
+                尊敬的用户<%=user.getUname() %>:
+            </p>
+            <p style="font-size:25px; text-indent: 50px;">
+                您好,欢迎来到心狗健康管理系统！
+                您上一次登录时间是<%=lastlogin%>。
+                请经常登陆心狗健康管理系统查看您的健康信息。
             </p>
             <%
                 } else {
                     out.println("<br>对不起，您还没有登录！");
                 }
             %>
+            <%--系统公告--%>
+            <br>
+            <br>
+            <table class="table table-responsive">
+                <tr>
+                    <th>系统公告</th>
+                    <th><a href="message.jsp">更多</a></th>
+                </tr>
+                <tr>
+                    <td><a href="message_1.jsp">关于心狗健康管理系统正式于5月1日上线的通知</a></td>
+                    <td>2017年4月20日</td>
+                </tr>
+                <tr>
+                    <td><a href="http://mp.weixin.qq.com/s/WycncfDaQcvmf-RtVceyVQ">心狗产品荣获第十八届中国国际工业博览会二等奖</a></td>
+                    <td>2016年12月1日</td>
+                </tr>
+                <tr>
+                    <td><a href="http://mp.weixin.qq.com/s/m7sjtz5eyci4JgN8IZ0o7A">上海市科学技术委员会主任寿子琪带队参观心狗产品</a></td>
+                    <td>2016年11月23日</td>
+                </tr>
+            </table>
+
+
+
+
+                <%--<div class="col-sm-8 col-md-8"><p style="font-size:25px; text-indent: 50px;">--%>
+                    <%--您好,欢迎来到心狗健康管理系统！--%>
+                    <%--您上一次登录时间是<%=lastlogin%>。--%>
+                    <%--请经常登陆心狗健康管理系统查看您的健康信息。--%>
+                <%--</p></div>--%>
+            <%--<div class="col-sm-4  col-md-4">--%>
+                <%--<div class="jumbotron">--%>
+                    <%--<h1>--%>
+                        <%--Hello, world!--%>
+                    <%--</h1>--%>
+                    <%--<p>--%>
+                        <%--This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.--%>
+                    <%--</p>--%>
+                    <%--<p>--%>
+                        <%--<a class="btn btn-primary btn-large" href="#">Learn more</a>--%>
+                    <%--</p>--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
         </div>
+
     </div>
 </div>
 
