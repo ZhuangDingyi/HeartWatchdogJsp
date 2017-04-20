@@ -81,12 +81,14 @@ public class UserServlet extends HttpServlet {
          String desease1=request.getParameter("desease1");
          String desease2=request.getParameter("desease2");
          String desease3=request.getParameter("desease3");
+         String deseasemore=request.getParameter("deseasemore");
          String dtime1=request.getParameter("dtime1");
          String dtime2=request.getParameter("dtime2");
          String dtime3=request.getParameter("dtime3");
          String operation1=request.getParameter("operation1");
          String operation2=request.getParameter("operation2");
          String operation3=request.getParameter("operation3");
+         String operationmore= request.getParameter("operationmore");
          String otime1=request.getParameter("otime1");
          String otime2=request.getParameter("otime2");
          String otime3=request.getParameter("otime3");
@@ -110,8 +112,8 @@ public class UserServlet extends HttpServlet {
          String isjobprotect=request.getParameter("isjobprotect");
             boolean rs = userdao.userInfoModify(user,gender,age,phone,email,addr,iden,nationality, company,
                     edu,job, marry, bloodtype, height,weight, selfevaluate, mentality,
-                    allergy, desease1,desease2,desease3,dtime1,dtime2,dtime3,operation1,
-                    operation2,operation3, otime1, otime2, otime3,
+                    allergy, desease1,desease2,desease3,deseasemore,dtime1,dtime2,dtime3,operation1,
+                    operation2,operation3,operationmore, otime1, otime2, otime3,
                     f1desease,f2desease, f3desease, f4desease, inheridesease, exefre, exeway, exetime, eathabit,
                     smokestatus, smokeamount, isdrink, drinkamount, drinkfre, sleepstatus,sleeptime, jobmaterial, isjobprotect);
             if (rs) {
@@ -136,12 +138,14 @@ public class UserServlet extends HttpServlet {
                 user.setDesease1(desease1);
                 user.setDesease2(desease2);
                 user.setDesease3(desease3);
+                user.setDeseasemore(deseasemore);
                 user.setDtime1(dtime1);
                 user.setDtime2(dtime2);
                 user.setDtime3(dtime3);
                 user.setOperation1(operation1);
                 user.setOperation2(operation2);
                 user.setOperation3(operation3);
+                user.setOperationmore(operationmore);
                 user.setOtime1(otime1);
                 user.setOtime2(otime2);
                 user.setOtime3(otime3);

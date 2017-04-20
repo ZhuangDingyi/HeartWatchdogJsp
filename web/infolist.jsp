@@ -160,8 +160,8 @@
                     </thead>
                 </table>
                 <%--<p id="test">12345</p>--%>
-                <br>
             </div>
+
         </div>
     </div>
     <div class="row">

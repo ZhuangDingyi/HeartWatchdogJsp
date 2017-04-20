@@ -35,7 +35,7 @@ public class InfoDao {
         if (rs != null) {
             list = new ArrayList();
             try {
-                while (rs.next()) {
+                while (rs.next()){
                     info = new Info();
                     info.setId(rs.getInt(1));
                     info.setUid(rs.getInt(2));

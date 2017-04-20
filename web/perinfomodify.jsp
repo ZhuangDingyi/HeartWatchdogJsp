@@ -19,7 +19,6 @@
     <link href="css/dashboard.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap-select.css">
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
     <title>个人信息修改</title>
 </head>
@@ -365,7 +364,13 @@
                     </div>
                     <input type="hidden" id="dtime_input3" name="dtime3" value="" /><br/>
                 </div>
-
+                <div class="form-group">
+                    <label for="deseasemore" class="col-sm-2 control-label">病情描述</label>
+                    <div class="col-sm-6">
+                                    <textarea name="deseasemore" id="deseasemore" style="resize:none;width:600px;height:120px"
+                                              maxlength="200" placeholder="200字以内"></textarea>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="18" class="col-sm-2 control-label">既往手术史:名称1</label>
                     <div class="col-sm-3">
@@ -401,6 +406,13 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                     </div>
                     <input type="hidden" name="otime3" id="otime_input3" value="" /><br/>
+                </div>
+                <div class="form-group">
+                    <label for="operationmore" class="col-sm-2 control-label">手术情况</label>
+                    <div class="col-sm-6">
+                                    <textarea name="operationmore" id="operationmore" style="resize:none;width:600px;height:120px"
+                                              maxlength="200" placeholder="200字以内"></textarea>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="21" class="col-sm-2 control-label">家族病史:父亲</label>
@@ -555,7 +567,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary">确认修改</button><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                        <button type="button" onclick="javascript:window.open('perinfo.jsp');" class="btn btn-primary">放弃更改</button>
+                        <button type="button" onclick="javascript:window.location.href='perinfo.jsp';" class="btn btn-primary">放弃更改</button>
                     </div>
                 </div>
 

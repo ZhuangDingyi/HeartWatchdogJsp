@@ -31,12 +31,14 @@ public class User {
     private String desease1;
     private String desease2;
     private String desease3;
+    private String deseasemore;
     private String dtime1;
     private String dtime2;
     private String dtime3;
     private String operation1;
     private String operation2;
     private String operation3;
+    private String operationmore;
     private String otime1;
     private String otime2;
     private String otime3;
@@ -475,6 +477,22 @@ public class User {
 
     public void setIsjobprotect(String isjobprotect) {
         this.isjobprotect = isjobprotect;
+    }
+
+    public String getDeseasemore() {
+        return deseasemore;
+    }
+
+    public void setDeseasemore(String deseasemore) {
+        this.deseasemore = deseasemore;
+    }
+
+    public String getOperationmore() {
+        return operationmore;
+    }
+
+    public void setOperationmore(String operationmore) {
+        this.operationmore = operationmore;
     }
 }
 

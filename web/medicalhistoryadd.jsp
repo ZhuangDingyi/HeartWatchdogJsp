@@ -1,10 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
-  User: viczyf
-  Date: 2017/2/12
-  Time: 10:38
+  User: HASS-PC
+  Date: 2017/4/20
+  Time: 16:05
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -18,8 +19,13 @@
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">
-    <%--<link rel="stylesheet" href="css/sweet-alert.css">--%>
-    <title>账户设置</title>
+    <link href="css/jquery-editable-select.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-select.min.css">
+
+<%--<link rel="stylesheet" href="css/sweet-alert.css">--%>
+    <title>添加个人病历</title>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top" role="navigation">
@@ -103,27 +109,70 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">修改密码</h2>
-            <form class="form-horizontal" action="UserServlet?action=modifypasswd" method="post" onsubmit="return change(this)">
+            <h2 class="sub-header">当前位置:添加个人病历(以下都是必填项)</h2>
+            <form class="form-horizontal" action="MedicalhistoryServlet?action=add" method="post" onsubmit="return change(this)">
                 <div class="form-group">
-                    <label for="1" class="col-sm-2 control-label">新密码</label>
-                    <div class="col-sm-6">
-                        <input type="password" class="form-control" name="passwd" maxlength="18" minlength="6" id="1"
-                               placeholder="密码长度应为6-18">
+                    <label for="date_id" class="col-sm-2 control-label">就诊时间</label>
+                    <div class="input-group date date col-sm-4" data-date="" data-date-format="yyyy-mm-dd" data-link-field="date_id" data-link-format="yyyy-mm-dd">
+                        <input class="form-control"size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                    <input type="hidden" name="date" id="date_id" value="" required /><br/>
+                </div>
+                <div class="form-group">
+                    <label for="1" class="col-sm-2 control-label">就诊城市</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="city" id="1" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="2" class="col-sm-2 control-label">确认新密码</label>
+                    <label for="2" class="col-sm-2 control-label">就诊医院</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="hospital" id="2" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="3" class="col-sm-2 control-label">就诊科室</label>
+                    <div class="col-sm-4">
+                        <select id="3" class="selectpicker show-tick form-control" name="office" required>
+                            <option>内科</option>
+                            <option>外科</option>
+                            <option>妇产科</option>
+                            <option>男科</option>
+                            <option>儿科</option>
+                            <option>传染科</option>
+                            <option>精神心理科</option>
+                            <option>五官科</option>
+                            <option>皮肤性病科</option>
+                            <option>中医科</option>
+                            <option>整形美容科</option>
+                            <option>营养科</option>
+                            <option>麻醉科</option>
+                            <option>医学影像科</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="4" class="col-sm-2 control-label">医生</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="doctor" id="4" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="conclusion" class="col-sm-2 control-label">结论</label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" name="passwd1" maxlength="18" minlength="6" id="2">
+                                    <textarea name="conclusion" id="conclusion" style="resize:none;width:600px;height:120px"
+                                              maxlength="200" placeholder="200字以内" required></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">确认修改</button>
+                        <button type="submit" class="btn btn-primary">确认修改</button><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <button type="button" onclick="javascript:window.location.href='medicalhistory.jsp';" class="btn btn-primary">放弃更改</button>
                     </div>
                 </div>
             </form>
+            <br>
         </div>
     </div>
 </div>
@@ -146,22 +195,35 @@
 <script src="js/jquery-3.1.1.js"></script>
 <!-- 包括所有已编译的插件 -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-editable-select.min.js"></script>
+
 <script src="js/sweet-alert.min.js"></script>
+<script src="js/sweet-alert.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+
 <script language="JavaScript">
+    $('#3').editableSelect();
     function change(form) {
-        if (form.passwd.value == "") {
-            swal({title:"错误",text:"密码不能为空！",type:"warning"});
+        if (form.date.value == "") {
+            swal({title:"错误",text:"就诊时间不能为空！",type:"warning"});
             return false;
         }
-        if (form.passwd1.value == "") {
-            swal({title:"错误",text:"确认密码不能为空！",type:"warning"});
-            return false;
-        }
-        if (form.passwd.value != form.passwd1.value) {
-            swal({title:"错误",text:"两次输入密码不一致！",type:"error"});
-return false;
-}
-}
+    }
+    $('.date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0,
+        pickerPosition: "bottom-left"
+    });
 </script>
+
 </body>
 </html>

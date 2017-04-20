@@ -229,7 +229,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td rowspan="3" style="vertical-align: middle;text-align: center;"><b>既往病史</b></td>
+                        <td rowspan="4" style="vertical-align: middle;text-align: center;"><b>既往病史</b></td>
                         <td><b>疾病1</b></td>
                         <td colspan="2"><%=user.getDesease1()%></td>
                         <td><b>确诊时间</b></td>
@@ -248,7 +248,11 @@
                         <td><%=user.getDtime3()%></td>
                     </tr>
                     <tr>
-                        <td rowspan="3" style="vertical-align: middle;text-align: center;"><b>既往手术史</b></td>
+                        <td><b>病情描述</b></td>
+                        <td colspan="4"><%=user.getDeseasemore()%></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4" style="vertical-align: middle;text-align: center;"><b>既往手术史</b></td>
                         <td><b>手术1</b></td>
                         <td colspan="2"><%=user.getOperation1()%></td>
                         <td><b>手术时间</b></td>
@@ -265,6 +269,10 @@
                         <td colspan="2"><%=user.getOperation3()%></td>
                         <td><b>手术时间</b></td>
                         <td><%=user.getOtime3()%></td>
+                    </tr>
+                    <tr>
+                        <td><b>手术详情</b></td>
+                        <td colspan="4"><%=user.getOperationmore()%></td>
                     </tr>
                     <tr>
                         <td rowspan="4" style="vertical-align: middle;text-align: center;"><b>家族病史</b></td>
@@ -324,7 +332,7 @@
                         <td><b>睡眠情况</b></td>
                         <td colspan="2"><%=user.getSleepstatus()%>
                         </td>
-                        <td><b>睡眠时间（小时</b></td>
+                        <td><b>睡眠时间(小时)</b></td>
                         <td colspan="2"><%=user.getSleeptime()%>
                         </td>
                     </tr>

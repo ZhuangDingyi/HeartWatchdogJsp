@@ -88,12 +88,14 @@ public class UserDao {
                 user.setDesease1(rs.getString("desease1"));
                 user.setDesease2(rs.getString("desease2"));
                 user.setDesease3(rs.getString("desease3"));
+                user.setDeseasemore(rs.getString("deseasemore"));
                 user.setDtime1(rs.getString("dtime1"));
                 user.setDtime2(rs.getString("dtime2"));
                 user.setDtime3(rs.getString("dtime3"));
                 user.setOperation1(rs.getString("operation1"));
                 user.setOperation2(rs.getString("operation2"));
                 user.setOperation3(rs.getString("operation3"));
+                user.setOperationmore(rs.getString("operationmore"));
                 user.setOtime1(rs.getString("otime1"));
                 user.setOtime2(rs.getString("otime2"));
                 user.setOtime3(rs.getString("otime3"));
@@ -286,8 +288,8 @@ public class UserDao {
 */
     public boolean userInfoModify(User user,String gender,String age,String phone,String email,String addr,String iden,String nationality, String company,
          String edu,String job, String marry, String bloodtype, String height,String weight, String selfevaluate, String mentality,
-         String allergy, String desease1,String desease2,String desease3,String dtime1,String dtime2,String dtime3,String operation1,
-         String operation2,String operation3, String otime1, String otime2, String otime3,
+         String allergy, String desease1,String desease2,String desease3,String deseasemore,String dtime1,String dtime2,String dtime3,String operation1,
+         String operation2,String operation3, String operationmore, String otime1, String otime2, String otime3,
          String f1desease,String f2desease, String f3desease, String f4desease, String inheridesease, String exefre, String exeway, String exetime, String eathabit,
          String smokestatus, String smokeamount, String isdrink, String drinkamount, String drinkfre, String sleepstatus,String sleeptime, String jobmaterial,String isjobprotect
     ) {
@@ -295,8 +297,8 @@ public class UserDao {
 //                "'where uid='" + user.getUid() + "'";
         String sql = "update users set gender='" +gender + "',age='" + age + "',phone='" +phone+ "',email='" + email + "',addr='" + addr+ "',iden='" + iden+
                 "',nationality='" + nationality + "',company='" +company+ "',edu='"+ edu+"',job='" + job + "',marry='" + marry+ "',bloodtype='" + bloodtype+ "',height='" +height+ "',weight='" + weight +
-                "',selfevaluate='" + selfevaluate + "',mentality='" +mentality+ "',allergy='" + allergy + "',desease1='" + desease1+ "',desease2='" + desease2+ "',desease3='" +desease3+ "',dtime1='" + dtime1 +
-                "',dtime2='" + dtime2 + "',dtime3='" +dtime3+ "',operation1='" + operation1 + "',operation2='" + operation2+ "',operation3='" + operation3+ "',otime1='" +otime1+ "',otime2='" + otime2 +
+                "',selfevaluate='" + selfevaluate + "',mentality='" +mentality+ "',allergy='" + allergy + "',desease1='" + desease1+ "',desease2='" + desease2+ "',desease3='" +desease3+"',deseasemore='" +deseasemore+ "',dtime1='" + dtime1 +
+                "',dtime2='" + dtime2 + "',dtime3='" +dtime3+ "',operation1='" + operation1 + "',operation2='" + operation2+ "',operation3='" + operation3+ "',operationmore='" +operationmore+"',otime1='" +otime1+ "',otime2='" + otime2 +
                 "',otime3='" + otime3 + "',f1desease='" +f1desease+ "',f2desease='" + f2desease + "',f3desease='" + f3desease+ "',f4desease='" + f4desease+ "',inheridesease='" +inheridesease+ "',exefre='" + exefre +
                 "',exeway='" + exeway + "',exetime='" +exetime+ "',eathabit='" + eathabit + "',smokestatus='" + smokestatus+ "',smokeamount='" + smokeamount+ "',isdrink='" +isdrink+ "',drinkamount='" + drinkamount +
                 "',drinkfre='" + drinkfre + "',sleepstatus='" +sleepstatus+ "',sleeptime='" + sleeptime + "',jobmaterial='" + jobmaterial+ "',isjobprotect='" + isjobprotect+

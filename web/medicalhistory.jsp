@@ -1,5 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.zyf.User" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="java.util.ArrayList" %>
+<%@ page import="com.google.gson.JsonArray" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -7,14 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <title>个人电子病历</title>
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
     <link href="//cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
-
-    <title>个人电子病历</title>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top" role="navigation">
@@ -33,7 +34,7 @@
                 <li>
                     <a href="homepage.jsp">首页</a>
                 </li>
-                <li>
+                <li >
                     <a href="infotime.jsp">诊断历史</a>
                 </li>
                 <li>
@@ -45,6 +46,33 @@
                 <li>
                     <a href="count.jsp">账户设置</a>
                 </li>
+                <!--<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                        <strong class="caret"></strong>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">Action</a>
+                        </li>
+                        <li>
+                            <a href="#">Another action</a>
+                        </li>
+                        <li>
+                            <a href="#">Something else here</a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                            <a href="#">Separated link</a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                            <a href="#">One more separated link</a>
+                        </li>
+                    </ul>
+                </li>
+                -->
                 <li>
                     <a href="message.jsp">消息通知</a>
                 </li>
@@ -63,8 +91,6 @@
         </div>
     </div>
 </nav>
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -114,9 +140,10 @@
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2>当前位置:电子病历</h2><hr>
-            <div class="table-responsive">
-                <table  id="teacher_table" data-toggle="table" data-url=""
+            <h2 class="sub-header">心电图及历史诊断结论</h2>
+            <%--<div class="table-responsive">--%>
+
+            <table  id="teacher_table" data-toggle="table" data-url="MedicalhistoryServlet?action=list"
                         data-method="post"
                         data-query-params="queryParams"
                         data-toolbar="#toolbar"
@@ -137,39 +164,41 @@
                         <th data-field="office" align="center">就诊科室</th>
                         <th data-field="doctor" align="center">医生</th>
                         <th data-field="conclusion" align="center">结论</th>
-                        <th data-field="del" align="center">删除</th>
+                        <th data-field="edit" align="center">修改</th>
+                        <th data-field="del" align="center">操作</th>
                     </tr>
                     </thead>
                 </table>
-            </div>
-            <a class="btn btn-primary" href="medicalhistoryadd.jsp" role="button">记录就诊信息</a>
-            <br><br><br><br>
+                <%--<p id="test">12345</p>--%>
+            <a class="btn btn-primary" href="medicalhistoryadd.jsp" role="button">添加病历</a>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div id="footer" class="container">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="navbar-inner navbar-content-center">
+                    <div class="text-center">
+                        <p class="text-muted credit" style="padding:10px;">
+                            &copy 上海夏先机电科技发展有限公司 版权所有 2014-2016 服务热线:400-775-2629
+                        </p>
+                    </div>
+                </div>
+            </nav>
         </div>
     </div>
 </div>
-<div id="footer" class="container">
-    <div class="col-sm-offset-3 col-md-offset-2">
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="navbar-inner navbar-content-center">
-                <div class="text-center">
-                    <p class="text-muted credit" style="padding:10px;">
-                        &copy 上海夏先机电科技发展有限公司 版权所有 2014-2016 服务热线:400-775-2629
-                    </p>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+
+
 <script src="js/jquery-3.1.1.js"></script>
-<!-- 包括所有已编译的插件 -->
+
 <script src="js/bootstrap.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
+
 <script src="//cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
 
-<!-- Latest compiled and minified Locales -->
 <script src="//cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
 </body>
 </html>
