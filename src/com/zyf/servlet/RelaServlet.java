@@ -129,7 +129,7 @@ public class RelaServlet extends HttpServlet{
                             "    $(document).ready(function(){\n" +
                             "        swal({\n" +
                             "            type:\"info\",\n" +
-                            "            title: \"对方已经向您提交了好友申请，请到验证消息中通过即\",\n" +
+                            "            title: \"对方已经向您提交了好友申请，请到验证消息中通过即可\",\n" +
                             "            text: '<a href=\"RelaServlet?action=RelaList#demoTab4\" role=\"button\"><font size=\"5\" color=\"green\"> 点此返回</font></a>。<br>5秒后自动返回。',\n" +
                             "            animation:\"slide-from-top\",\n" +
                             "            html: true,\n" +

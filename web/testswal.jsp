@@ -20,12 +20,12 @@
             text: '<a href="RelaServlet?action=RelaList#demoTab4" role="button"><font size="5" color="green"> 点此返回</font></a>。<br>5秒后自动返回。',
             animation:"slide-from-top",
             html: true,
-            timer: 5000,
+            timer: 5000000,
             showConfirmButton: false
         });
     })
     window.onload = function(){
-        setTimeout(fun,5000);
+        setTimeout(fun,50000000);
     }
 
     function fun(){
